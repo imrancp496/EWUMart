@@ -1,0 +1,8 @@
+# EWUMart .gitignore
+.env
+.tmp/
+credentials.json
+token.json
+__pycache__/
+*.pyc
+.DS_Store
