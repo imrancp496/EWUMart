@@ -79,7 +79,7 @@
               style="width: 100%"
               onclick="AuthController.visitor()"
             >
-              👀 Continue as Visitor
+              <i class="ph-bold ph-eye"></i> Continue as Visitor
             </button>
           </div>
           <!-- register -->
@@ -203,18 +203,26 @@
               </div>
             </div>
           </div>
-          <div class="dd-wrap hover-dd">
+          <div class="dd-wrap" id="profile-dd-wrap">
             <div
               class="nav-avatar"
               id="nav-av"
-              onclick="Router.go('profile')"
+              onclick="AuthController.toggleProfileMenu()"
             ></div>
             <div
               class="dd"
               id="profile-dd"
-              style="min-width: 140px; right: 0; top: calc(100% + 5px)"
+              style="min-width: 160px; right: 0; top: calc(100% + 5px)"
             >
-              <div class="dd-item" onclick="Router.go('profile')">
+              <div class="dd-item" onclick="AuthController.goProfile()">
+                <i
+                  class="ph-bold ph-user"
+                  style="
+                    font-size: 15px;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                  "
+                ></i>
                 My Profile
               </div>
               <div
@@ -222,6 +230,14 @@
                 onclick="AuthController.confirmLogout()"
                 style="color: var(--danger)"
               >
+                <i
+                  class="ph-bold ph-sign-out"
+                  style="
+                    font-size: 15px;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                  "
+                ></i>
                 Logout
               </div>
             </div>
@@ -724,7 +740,33 @@
             <div class="profile-layout">
               <div>
                 <div class="card pfl-card" style="margin-bottom: 16px">
-                  <div class="pfl-av" id="pfl-av"></div>
+                  <!-- Avatar upload area -->
+                  <div
+                    class="pfl-av-wrap"
+                    onclick="document.getElementById('pfl-av-input').click()"
+                    title="Change profile photo"
+                  >
+                    <div class="pfl-av" id="pfl-av"></div>
+                    <div class="pfl-av-overlay">
+                      <i class="ph-bold ph-camera"></i>
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    id="pfl-av-input"
+                    accept="image/*"
+                    class="hidden"
+                    onchange="ProfileController.saveAvatar(this)"
+                  />
+                  <button
+                    class="btn btn-ghost btn-sm"
+                    id="pfl-av-remove"
+                    style="margin-top: 8px; font-size: 12px; display: none"
+                    onclick="ProfileController.removeAvatar()"
+                  >
+                    <i class="ph-bold ph-trash" style="font-size: 13px"></i>
+                    Remove photo
+                  </button>
                   <div
                     style="
                       font-family: &quot;Syne&quot;, sans-serif;
@@ -813,9 +855,18 @@
                   <div class="fg">
                     <label>Semester</label
                     ><select id="e-sem">
-                      <option>Spring 2025</option>
-                      <option>Summer 2025</option>
-                      <option>Fall 2025</option>
+                      <option>1st</option>
+                      <option>2nd</option>
+                      <option>3rd</option>
+                      <option>4th</option>
+                      <option>5th</option>
+                      <option>6th</option>
+                      <option>7th</option>
+                      <option>8th</option>
+                      <option>9th</option>
+                      <option>10th</option>
+                      <option>11th</option>
+                      <option>12th</option>
                     </select>
                   </div>
                 </div>
@@ -1136,6 +1187,121 @@
 
     <div id="toast"></div>
 
+    <!-- ── LOGOUT CONFIRM MODAL ── -->
+    <div class="overlay" id="logout-modal">
+      <div class="modal" style="max-width: 400px">
+        <div
+          class="modal-body"
+          style="text-align: center; padding: 36px 32px 28px"
+        >
+          <!-- Icon -->
+          <div
+            style="
+              width: 64px;
+              height: 64px;
+              border-radius: 50%;
+              background: var(--danger-light);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto 20px;
+              font-size: 28px;
+            "
+          >
+            <i class="ph-bold ph-sign-out" style="color: var(--danger)"></i>
+          </div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px">
+            Log out?
+          </h3>
+          <p
+            style="
+              color: var(--text2);
+              font-size: 14px;
+              line-height: 1.6;
+              margin-bottom: 28px;
+            "
+          >
+            You'll need to sign in again to access your account, messages, and
+            listings.
+          </p>
+          <div style="display: flex; gap: 12px">
+            <button
+              class="btn btn-ghost"
+              style="flex: 1; justify-content: center"
+              onclick="AuthController.closeLogoutModal()"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-danger"
+              style="flex: 1; justify-content: center"
+              onclick="AuthController.logout()"
+            >
+              <i class="ph-bold ph-sign-out" style="font-size: 16px"></i> Yes,
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DELETE POST CONFIRM MODAL ── -->
+    <div class="overlay" id="delete-post-modal">
+      <div class="modal" style="max-width: 400px">
+        <div
+          class="modal-body"
+          style="text-align: center; padding: 36px 32px 28px"
+        >
+          <div
+            style="
+              width: 64px;
+              height: 64px;
+              border-radius: 50%;
+              background: var(--danger-light);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto 20px;
+              font-size: 28px;
+            "
+          >
+            <i class="ph-bold ph-trash" style="color: var(--danger)"></i>
+          </div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px">
+            Delete this post?
+          </h3>
+          <p
+            style="
+              color: var(--text2);
+              font-size: 14px;
+              line-height: 1.6;
+              margin-bottom: 28px;
+            "
+          >
+            This action is permanent. The listing will be removed and can't be
+            recovered.
+          </p>
+          <div style="display: flex; gap: 12px">
+            <button
+              class="btn btn-ghost"
+              style="flex: 1; justify-content: center"
+              onclick="DeleteModal.close()"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-danger"
+              style="flex: 1; justify-content: center"
+              onclick="DeleteModal.confirm()"
+            >
+              <i class="ph-bold ph-trash" style="font-size: 16px"></i> Yes,
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ══════════════════════════════════════════
      JavaScript — loaded in dependency order
 ══════════════════════════════════════════ -->
@@ -1146,6 +1312,8 @@
     <script src="js/Toast.js"></script>
     <script src="js/Badge.js"></script>
     <script src="js/Router.js"></script>
+    <script src="js/Avatar.js"></script>
+    <script src="js/DeleteModal.js"></script>
 
     <!-- Layer: Feature controllers -->
     <script src="js/controllers/AuthController.js"></script>

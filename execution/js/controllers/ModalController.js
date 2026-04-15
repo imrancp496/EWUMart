@@ -32,9 +32,9 @@ class ModalController {
       <div style="margin-top:18px;padding:13px;background:var(--bg);border-radius:var(--r)">
         <div style="font-weight:600;font-size:13px;margin-bottom:8px">Seller</div>
         <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;
-                      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">
-            ${seller ? seller.fname[0] : "?"}</div>
+          ${Avatar.html(seller ? seller.id : 0, seller ? seller.fname[0] : "?", "",
+            "width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;" +
+            "display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;")}
           <div>
             <div style="font-weight:500;font-size:14px">${seller ? seller.fname + " " + seller.lname : "Unknown"}</div>
             <div style="font-size:12px;color:var(--text3)">${seller ? seller.dept + " · " + seller.sem : ""}</div>
@@ -46,8 +46,8 @@ class ModalController {
 
     document.getElementById("pm-ftr").innerHTML = own
       ? `<button class="btn btn-ghost" onclick="ModalController.closeProduct()">Close</button>
-         <button class="btn btn-outline" onclick="ModalController.closeProduct();PostController.edit(${p.id})">✏️ Edit</button>
-         <button class="btn btn-danger" onclick="PostListController.del(${p.id});ModalController.closeProduct()">🗑️ Delete</button>`
+         <button class="btn btn-outline" onclick="ModalController.closeProduct();PostController.edit(${p.id})"><i class="ph-bold ph-pencil-simple"></i> Edit</button>
+         <button class="btn btn-danger" onclick="PostListController.del(${p.id});ModalController.closeProduct()"><i class="ph-bold ph-trash"></i> Delete</button>`
       : `<button class="btn btn-ghost btn-sm" onclick="ModalController.closeProduct();ReportController.open(${p.id})"><i class="ph-bold ph-flag-pennant"></i> Report</button>
          <button class="btn btn-ghost" onclick="ModalController.closeProduct()">Close</button>
          ${

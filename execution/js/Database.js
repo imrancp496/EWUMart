@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Database — in-memory cache backed by the Flask/SQLite REST API.
@@ -10,8 +10,12 @@
 class Database {
   constructor() {
     this.data = {
-      users: [], products: [], msgs: [],
-      txns: [], reviews: [], reports: [],
+      users: [],
+      products: [],
+      msgs: [],
+      txns: [],
+      reviews: [],
+      reports: [],
     };
   }
 
@@ -23,41 +27,52 @@ class Database {
   async init(uid) {
     if (uid === 0) {
       this.data.products = await ApiService.getProducts();
-      this.data.users = []; this.data.msgs = []; this.data.txns = []; this.data.reviews = []; this.data.reports = [];
+      this.data.users = [];
+      this.data.msgs = [];
+      this.data.txns = [];
+      this.data.reviews = [];
+      this.data.reports = [];
       return;
     }
     const d = await ApiService.init(uid);
-    this.data.users    = d.users    || [];
+    this.data.users = d.users || [];
     this.data.products = d.products || [];
-    this.data.msgs     = d.msgs     || [];
-    this.data.txns     = d.txns     || [];
-    this.data.reviews  = d.reviews  || [];
-    this.data.reports  = d.reports  || [];
+    this.data.msgs = d.msgs || [];
+    this.data.txns = d.txns || [];
+    this.data.reviews = d.reviews || [];
+    this.data.reports = d.reports || [];
   }
 
   // ── Sync lookups (read from cache) ─────────────────────────────────────────
 
   /** @returns {object|undefined} */
-  user(id)  { return this.data.users.find(u => u.id === id); }
+  user(id) {
+    return this.data.users.find((u) => u.id === id);
+  }
 
   /** @returns {object|undefined} */
-  prod(id)  { return this.data.products.find(p => p.id === id); }
+  prod(id) {
+    return this.data.products.find((p) => p.id === id);
+  }
 
   /** All partner user IDs for uid */
   partners(uid) {
-    const mine = this.data.msgs.filter(m => m.from === uid || m.to === uid);
-    return [...new Set(mine.map(m => m.from === uid ? m.to : m.from))];
+    const mine = this.data.msgs.filter((m) => m.from === uid || m.to === uid);
+    return [...new Set(mine.map((m) => (m.from === uid ? m.to : m.from)))];
   }
 
   /** Messages exchanged between uid and pid */
   thread(uid, pid) {
-    return this.data.msgs.filter(m =>
-      (m.from === uid && m.to === pid) || (m.from === pid && m.to === uid)
+    return this.data.msgs.filter(
+      (m) =>
+        (m.from === uid && m.to === pid) || (m.from === pid && m.to === uid),
     );
   }
 
   /** Count of conversation partners (badge count) */
-  unread(uid) { return this.partners(uid).length; }
+  unread(uid) {
+    return this.partners(uid).length;
+  }
 
   // ── Async mutators (API → cache) ───────────────────────────────────────────
 
@@ -75,7 +90,7 @@ class Database {
    */
   async updateProduct(id, changes) {
     const saved = await ApiService.updateProduct(id, changes);
-    const idx   = this.data.products.findIndex(p => p.id === id);
+    const idx = this.data.products.findIndex((p) => p.id === id);
     if (idx >= 0) this.data.products[idx] = saved;
     return saved;
   }
@@ -83,7 +98,7 @@ class Database {
   /** Delete a product */
   async removeProd(id) {
     await ApiService.deleteProduct(id);
-    this.data.products = this.data.products.filter(p => p.id !== id);
+    this.data.products = this.data.products.filter((p) => p.id !== id);
   }
 
   /** Send a chat message */
@@ -104,7 +119,7 @@ class Database {
     this.data.txns.push(saved);
     // Reflect sold status in cache
     const p = this.prod(data.pid);
-    if (p) p.status = 'Sold';
+    if (p) p.status = "Sold";
     return saved;
   }
 
@@ -118,7 +133,7 @@ class Database {
   /** Resolve a report (admin) */
   async resolveReport(id) {
     const saved = await ApiService.resolveReport(id);
-    const idx   = this.data.reports.findIndex(r => r.id === id);
+    const idx = this.data.reports.findIndex((r) => r.id === id);
     if (idx >= 0) this.data.reports[idx] = saved;
     return saved;
   }
@@ -126,7 +141,7 @@ class Database {
   /** Update a user's profile fields */
   async updateUser(uid, changes) {
     const saved = await ApiService.updateUser(uid, changes);
-    const idx   = this.data.users.findIndex(u => u.id === uid);
+    const idx = this.data.users.findIndex((u) => u.id === uid);
     if (idx >= 0) this.data.users[idx] = saved;
     return saved;
   }
@@ -141,7 +156,7 @@ class Database {
   /** Admin: promote/demote a user's role */
   async setUserRole(uid, role) {
     const saved = await ApiService.put(`/users/${uid}/role`, { role });
-    const idx   = this.data.users.findIndex(u => u.id === uid);
+    const idx = this.data.users.findIndex((u) => u.id === uid);
     if (idx >= 0) this.data.users[idx] = saved;
     return saved;
   }

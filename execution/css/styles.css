@@ -1275,6 +1275,35 @@ label {
   font-weight: 700;
   margin: 0 auto 14px;
 }
+.pfl-av-wrap {
+  position: relative;
+  width: 84px;
+  margin: 0 auto 6px;
+  cursor: pointer;
+}
+.pfl-av-wrap .pfl-av {
+  margin: 0;
+  transition: filter 0.2s;
+}
+.pfl-av-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.pfl-av-wrap:hover .pfl-av-overlay {
+  opacity: 1;
+}
+.pfl-av-wrap:hover .pfl-av {
+  filter: brightness(0.75);
+}
 .rv-item {
   padding: 13px 0;
   border-bottom: 1px solid var(--border);

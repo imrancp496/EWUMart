@@ -64,20 +64,21 @@ class PostListController {
     }
   }
 
-  /** Delete product — async API delete */
-  static async del(id) {
-    if (!confirm("Delete this post?")) return;
-    try {
-      Loader.show("Deleting…");
-      await db.removeProd(id);
-      PostListController.render();
-      DashController.render();
-      Toast.show("Post deleted.");
-    } catch (e) {
-      Toast.show("Failed to delete post.");
-    } finally {
-      Loader.hide();
-    }
+  /** Delete product — opens confirmation modal */
+  static del(id) {
+    DeleteModal.open(id, async (pid) => {
+      try {
+        Loader.show("Deleting…");
+        await db.removeProd(pid);
+        PostListController.render();
+        DashController.render();
+        Toast.show("Post deleted.");
+      } catch (e) {
+        Toast.show("Failed to delete post.");
+      } finally {
+        Loader.hide();
+      }
+    });
   }
 }
 
