@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Badge — syncs unread message count badges across
@@ -12,13 +12,13 @@ class Badge {
     if (!u) return;
 
     const count = db.unread(u.id);
-    const ids   = ['nav-msg-cnt', 'sb-msg-bdg', 'bar-msg-bb'];
+    const ids = ["nav-msg-cnt", "sb-msg-bdg", "bar-msg-bb"];
 
-    ids.forEach(id => {
+    ids.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
       el.textContent = count;
-      el.classList.toggle('hidden', count === 0);
+      el.classList.toggle("hidden", count === 0);
     });
   }
 }
