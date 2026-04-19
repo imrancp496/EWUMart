@@ -147,6 +147,10 @@ class ApiService {
     return ApiService.put(`/users/${id}`, data);
   }
 
+  static deleteUser(id) {
+    return ApiService.del(`/users/${id}`);
+  }
+
   static updatePassword(id, currentPw, newPw) {
     return ApiService.put(`/users/${id}/password`, { currentPw, newPw });
   }

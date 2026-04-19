@@ -26,7 +26,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 # ── Config ───────────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH  = os.path.join(BASE_DIR, 'ewumart.db')
+if os.environ.get("VERCEL"):
+    DB_PATH = '/tmp/ewumart.db'
+else:
+    DB_PATH = os.path.join(BASE_DIR, 'ewumart.db')
 
 app = Flask(__name__, static_folder=BASE_DIR)
 CORS(app)
@@ -442,6 +445,23 @@ def api_set_role(uid):
         return jsonify({'error': 'Invalid role'}), 400
     mut("UPDATE users SET role=? WHERE id=?", (role, uid))
     return jsonify(q1("SELECT * FROM users WHERE id=?", (uid,)))
+
+@app.route('/api/users/<int:uid>', methods=['DELETE'])
+def api_delete_user(uid):
+    """Admin: delete a user."""
+    # Delete the user
+    mut("DELETE FROM users WHERE id=?", (uid,))
+    # Delete their products
+    mut("DELETE FROM products WHERE sid=?", (uid,))
+    # Delete messages
+    mut("DELETE FROM messages WHERE src=? OR dst=?", (uid, uid))
+    # Delete reviews
+    mut("DELETE FROM reviews WHERE by_u=? OR for_u=?", (uid, uid))
+    # Delete transactions
+    mut("DELETE FROM transactions WHERE bid=? OR seller=?", (uid, uid))
+    # Delete reports
+    mut("DELETE FROM reports WHERE by_u=?", (uid,))
+    return jsonify({'ok': True})
 
 @app.route('/api/users/<int:uid>/password', methods=['PUT'])
 def api_change_password(uid):
