@@ -630,6 +630,9 @@ def static_files(path):
     return send_from_directory(BASE_DIR, path)
 
 # ── Entry Point ───────────────────────────────────────────────────────────────
+if os.environ.get("VERCEL"):
+    init_db()
+
 if __name__ == '__main__':
     init_db()
     print("\n[EWUMart] Backend running at http://localhost:5500\n")
