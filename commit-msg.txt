@@ -1,0 +1,17 @@
+feat: initial project setup and authentication UI layout
+
+PROJECT INITIALIZATION
+- Scaffold project using Vite with React
+- Install and configure Tailwind CSS v4 for utility-first styling
+- Add @phosphor-icons/react for scalable UI icons
+
+THEME & STYLING
+- Define custom color palette (brand, accent, surface, bg) in index.css
+- Configure custom fonts (DM Sans, Montserrat, Syne) via Tailwind theme variables
+- Add custom breakpoints (2xs, xs, ml) for precise responsive design control
+
+AUTHENTICATION UI
+- Create responsive two-column Auth layout in App.jsx (AuthLeft and AuthRight)
+- Implement AuthLeft component with EWUMart branding, typography, and decorative background circles
+- Implement AuthRight component featuring login/signup tabs, Google auth button, and Guest login option
+- Add visual guidance tag indicating the requirement for "@std.ewubd.edu" institutional emails
