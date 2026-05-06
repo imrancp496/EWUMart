@@ -1,17 +1,25 @@
-feat: initial project setup and authentication UI layout
+feat: implement registration flow, custom UI components, and routing setup
 
-PROJECT INITIALIZATION
-- Scaffold project using Vite with React
-- Install and configure Tailwind CSS v4 for utility-first styling
-- Add @phosphor-icons/react for scalable UI icons
+PROJECT RESTRUCTURE
+- Move all project files from nested `ewumart/` directory to root repository level
+- Update git tracking and configuration paths to reflect the new structure
 
-THEME & STYLING
-- Define custom color palette (brand, accent, surface, bg) in index.css
-- Configure custom fonts (DM Sans, Montserrat, Syne) via Tailwind theme variables
-- Add custom breakpoints (2xs, xs, ml) for precise responsive design control
+ROUTING & NAVIGATION
+- Install and configure `react-router-dom` in `main.jsx`
+- Establish core application routing in `App.jsx` using `<Routes>` and `<Route>`
+- Extract authentication layout into a dedicated `AuthPage` component
+- Create `Home` page placeholder and implement programmatic navigation for Guest login
 
-AUTHENTICATION UI
-- Create responsive two-column Auth layout in App.jsx (AuthLeft and AuthRight)
-- Implement AuthLeft component with EWUMart branding, typography, and decorative background circles
-- Implement AuthRight component featuring login/signup tabs, Google auth button, and Guest login option
-- Add visual guidance tag indicating the requirement for "@std.ewubd.edu" institutional emails
+REGISTRATION MODAL
+- Build `RegistrationModal` component with responsive 2/3 and 1/3 form column layouts
+- Implement customized Date of Birth input section and optional profile inputs
+- Add `InfoTooltip` component with click-outside closing behavior for better user experience
+
+CUSTOM UI COMPONENTS
+- Develop reusable `CustomSelect` dropdown component to replace native select inputs
+- Style custom dropdowns to match application's established design language
+- Integrate interactive states and custom icons for an enhanced premium feel
+
+LAYOUT & STYLING FIXES
+- Equalize layout widths between `AuthLeft` and `AuthRight` containers
+- Resolve custom font application issues in Tailwind config to ensure proper rendering
