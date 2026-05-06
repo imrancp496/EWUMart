@@ -11,8 +11,8 @@ export default function BottomNavBar() {
   const location = useLocation();
 
   return (
-    <div className="bg-brand fixed bottom-0 flex w-full items-center justify-around py-3 text-white">
-      <div>
+    <>
+      <div className="ml:hidden">
         <button
           onClick={() => navigate("/home")}
           className="flex cursor-pointer items-center justify-center"
@@ -59,6 +59,6 @@ export default function BottomNavBar() {
           R
         </button>
       </div>
-    </div>
+    </>
   );
 }

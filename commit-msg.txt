@@ -1,25 +1,11 @@
-feat: implement registration flow, custom UI components, and routing setup
+feat: implement main layout, navigation bars, and core application pages
 
-PROJECT RESTRUCTURE
-- Move all project files from nested `ewumart/` directory to root repository level
-- Update git tracking and configuration paths to reflect the new structure
+LAYOUT & NAVIGATION
+- Build `MainLayout` component to serve as the application shell with persistent navigation
+- Develop `TopNavbar` with responsive search bar overlay and branding
+- Implement `BottomNavBar` with active route highlighting using Phosphor icons
+- Integrate layout into `App.jsx` using nested React Router `<Outlet>` structure
 
-ROUTING & NAVIGATION
-- Install and configure `react-router-dom` in `main.jsx`
-- Establish core application routing in `App.jsx` using `<Routes>` and `<Route>`
-- Extract authentication layout into a dedicated `AuthPage` component
-- Create `Home` page placeholder and implement programmatic navigation for Guest login
-
-REGISTRATION MODAL
-- Build `RegistrationModal` component with responsive 2/3 and 1/3 form column layouts
-- Implement customized Date of Birth input section and optional profile inputs
-- Add `InfoTooltip` component with click-outside closing behavior for better user experience
-
-CUSTOM UI COMPONENTS
-- Develop reusable `CustomSelect` dropdown component to replace native select inputs
-- Style custom dropdowns to match application's established design language
-- Integrate interactive states and custom icons for an enhanced premium feel
-
-LAYOUT & STYLING FIXES
-- Equalize layout widths between `AuthLeft` and `AuthRight` containers
-- Resolve custom font application issues in Tailwind config to ensure proper rendering
+CORE PAGES
+- Create placeholder components for `Home`, `Messages`, `Notifications`, and `Profile` pages
+- Set up corresponding routes in `App.jsx` to enable full in-app navigation
