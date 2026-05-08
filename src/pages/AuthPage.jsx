@@ -1,11 +1,11 @@
-import { EyeIcon, StudentIcon } from "@phosphor-icons/react";
-import { useState } from "react";
 import RegistrationModal from "../modals/RegistrationModal";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PiEye, PiStudent } from "react-icons/pi";
 
 function AuthHero() {
   return (
-    <div className="ml:max-w-none ml:px-16 ml:h-screen ml:justify-center ml:bg-brand ml:overflow-hidden ml:relative ml:before:content-[''] ml:before:absolute ml:before:w-[420px] ml:before:h-[420px] ml:before:rounded-full ml:before:bg-circle ml:before:top-[-110px] ml:before:right-[-130px] ml:after:content-[''] ml:after:absolute ml:after:w-[300px] ml:after:h-[300px] ml:after:rounded-full ml:after:bg-circle-light ml:after:bottom-[-70px] ml:after:left-[-70px] flex w-full max-w-[400px] flex-col gap-2">
+    <div className="ml:max-w-none ml:px-16 ml:h-screen ml:justify-center ml:bg-brand ml:overflow-hidden ml:relative ml:before:content-[''] ml:before:absolute ml:before:w-105 ml:before:h-105 ml:before:rounded-full ml:before:bg-circle ml:before:-top-27.5 ml:before:-right-32.5 ml:after:content-[''] ml:after:absolute ml:after:w-75 ml:after:h-75 ml:after:rounded-full ml:after:bg-circle-light ml:after:-bottom-17.5 ml:after:-left-17.5 flex w-full max-w-100 flex-col gap-2">
       <h1 className="font-syne text-brand 2xs:text-4xl ml:text-white text-3xl font-extrabold">
         EWU<span className="text-accent">Mart</span>
       </h1>
@@ -69,7 +69,7 @@ function GoogleLoginButton({ setVerficationStatus }) {
 function RequirementBadge({ badgeText }) {
   return (
     <p className="text-brand-mid bg-brand-light border-brand-border xs:flex xs:items-center xs:justify-center xs:gap-2 mb-10 rounded-lg border px-4 py-2 text-sm">
-      <StudentIcon size={18} className="xs:block hidden" />
+      <PiStudent size={18} className="xs:block hidden" />
       {badgeText}
     </p>
   );
@@ -93,7 +93,7 @@ function GuestLoginButton() {
       onClick={() => navigate("/home")}
       className="text-text2 border-border hover:bg-bg2 mb-6 flex w-full cursor-pointer items-center justify-center gap-4 rounded-lg border py-2 font-medium transition-colors"
     >
-      <EyeIcon size={22} />
+      <PiEye size={22} />
       Continue as Guest
     </button>
   );

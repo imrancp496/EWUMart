@@ -1,11 +1,17 @@
-feat: implement main layout, navigation bars, and core application pages
+feat: migrate to react-icons and introduce product grid layout
 
-LAYOUT & NAVIGATION
-- Build `MainLayout` component to serve as the application shell with persistent navigation
-- Develop `TopNavbar` with responsive search bar overlay and branding
-- Implement `BottomNavBar` with active route highlighting using Phosphor icons
-- Integrate layout into `App.jsx` using nested React Router `<Outlet>` structure
+ICON MIGRATION
+- Remove `@phosphor-icons/react` dependency in favor of `react-icons`
+- Replace all phosphor icon implementations with their equivalents from `react-icons/pi`
+- Update icon usages across `App.jsx`, `TopNavbar.jsx`, `BottomNavBar.jsx`, `RegistrationModal.jsx`, and `AuthPage.jsx`
 
-CORE PAGES
-- Create placeholder components for `Home`, `Messages`, `Notifications`, and `Profile` pages
-- Set up corresponding routes in `App.jsx` to enable full in-app navigation
+NEW PAGES & COMPONENTS
+- Create `Product.jsx` component to display individual product cards with ratings
+- Create `Footer.jsx` component for layout completion
+- Add new `Cart.jsx` page and delete unused `Messages.jsx` page
+- Populate `Home.jsx` with a responsive grid layout displaying multiple product instances
+
+LAYOUT & STYLING UPDATES
+- Apply `bg-bg` background color and center alignment to `MainLayout`
+- Add `max-w-6xl` constraint and adjust desktop bottom padding (`ml:pb-0`) in `MainLayout`
+- Update `Profile.jsx` to return an empty layout structure

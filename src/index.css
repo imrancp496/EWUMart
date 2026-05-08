@@ -8,6 +8,7 @@
   --color-brand: #1a3a5c;
   --color-brand-mid: #2563a8;
   --color-brand-light: #e8f1fb;
+  --color-brand-dark: #11203b;
   --color-accent: #f4a61d;
   --color-accent-light: #fef6e4;
   --color-danger: #d93025;
@@ -24,7 +25,8 @@
   --color-circle: rgba(37, 99, 168, 0.35);
   --color-circle-light: rgba(37, 99, 168, 0.22);
   --color-brand-border: rgba(37, 99, 168, 0.18);
-  --breakpoint-2xs: 330px;
-  --breakpoint-xs: 410px;
-  --breakpoint-ml: 900px;
+  --breakpoint-2xs: 20.625rem; /* 330px */
+  --breakpoint-xs: 25.625rem; /* 410px */
+  --breakpoint-ml: 56.25rem; /* 900px */
+  --breakpoint-2lg: 72rem; /* 1152px */
 }

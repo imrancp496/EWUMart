@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { CheckIcon, CaretDownIcon, QuestionIcon } from "@phosphor-icons/react";
+import { PiCheck, PiCaretDown, PiQuestion } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 
 const departmentOptions = [
@@ -48,7 +48,7 @@ function InfoTooltip({ text }) {
       className="relative flex cursor-pointer items-center"
       onClick={() => setIsVisible(!isVisible)}
     >
-      <QuestionIcon size={18} className="text-text2" />
+      <PiQuestion size={18} className="text-text2" />
       {isVisible && (
         <div className="border-border bg-bg text-text2 absolute bottom-full left-1/2 z-50 mb-2 w-[150px] -translate-x-5/6 transform cursor-default rounded-lg border px-3 py-2 shadow-lg">
           {text}
@@ -93,7 +93,7 @@ function CustomSelect({ options, placeholder, value, onChange }) {
             ? options.find((o) => o.value === value)?.label || value
             : placeholder}
         </span>
-        <CaretDownIcon
+        <PiCaretDown
           size={16}
           className={`text-text2 flex-shrink-0 transition-transform ${
             isOpen ? "rotate-180" : ""
@@ -136,7 +136,7 @@ export default function RegistrationModal({ setVerficationStatus }) {
         <div className="xs:gap-8 mb-6 flex items-center text-xs">
           <div className="flex flex-col items-center gap-2">
             <div className="bg-success flex h-8 w-8 items-center justify-center rounded-full text-white">
-              <CheckIcon />
+              <PiCheck />
             </div>
             <span>Google Verified</span>
           </div>

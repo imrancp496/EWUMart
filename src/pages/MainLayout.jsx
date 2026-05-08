@@ -3,9 +3,9 @@ import TopNavBar from "../components/TopNavbar";
 
 export default function MainLayout() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="bg-bg flex min-h-screen flex-col items-center">
       <TopNavBar />
-      <main className="flex-grow pb-13">
+      <main className="ml:pb-0 w-full max-w-6xl pb-13">
         <Outlet />
       </main>
     </div>
