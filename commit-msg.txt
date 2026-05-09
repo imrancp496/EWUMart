@@ -1,19 +1,4 @@
-feat: implement responsive left sidebar and dynamic product routing
+fix(layout): prevent body scroll when mobile navigation is open
 
-NAVIGATION & LAYOUT REFACTOR
-- Create `LeftNavBar.jsx` with responsive toggle behavior, sliding drawer animations, and sectioned links (Categories, Seller, Report)
-- Update `MainLayout.jsx` to manage `isNavOpen` state and integrate the new `LeftNavBar` alongside the main content
-- Refactor `TopNavbar.jsx` to synchronize logo container width (`w-62`), enforce explicit predictable heights, and add animated hamburger/close toggle
-- Adjust desktop search bar layout to shrink gracefully (`min-w-0`) and restyle mobile `BottomNavBar` container into a floating, blurred pill
-
-PRODUCT & ROUTING UPDATES
-- Extract `RatingStars` logic from `Product.jsx` into a standalone `RatingStars.jsx` component
-- Update `Product.jsx` to wrap items in `Link` components for dynamic routing based on a new `id` prop
-- Create `ProductPage.jsx` to handle rendering individual product details via `useParams`
-- Register the new `/product/:id` route within `App.jsx`
-- Supply unique `id` props to all `Product` instances in `Home.jsx` and clean up hardcoded rating values
-
-STYLING & MISC FIXES
-- Adjust the `2lg` breakpoint in `index.css` from `72rem` to `74rem`
-- Reorder Tailwind layout classes in `AuthPage.jsx` and clean up grid columns in `Home.jsx`
-- Add basic placeholder text to `Profile.jsx`
+LAYOUT FIXES
+- Prevent main content from scrolling on mobile when the `LeftNavBar` is open by toggling `overflow: hidden` on the `body` element

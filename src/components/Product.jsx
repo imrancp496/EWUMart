@@ -19,7 +19,7 @@ export default function Product({
       <div className="2xs:basis-3/5 xs:basis-auto mt-4">
         <Link
           to={`/product/${id}`}
-          className="hover:text-brand-mid mb-2 line-clamp-2 h-12 cursor-pointer text-lg leading-6 font-medium hover:underline"
+          className="hover:text-brand-mid mb-2 line-clamp-2 h-12 cursor-pointer leading-6 font-medium hover:underline"
         >
           {productName}
         </Link>
