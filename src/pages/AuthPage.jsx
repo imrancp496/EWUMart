@@ -68,7 +68,7 @@ function GoogleLoginButton({ setVerficationStatus }) {
 
 function RequirementBadge({ badgeText }) {
   return (
-    <p className="text-brand-mid bg-brand-light border-brand-border xs:flex xs:items-center xs:justify-center xs:gap-2 mb-10 rounded-lg border px-4 py-2 text-sm">
+    <p className="text-brand-mid bg-brand-light border-brand-border xs:flex xs:justify-center xs:gap-2 mb-10 items-center rounded-lg border px-4 py-2 text-sm">
       <PiStudent size={18} className="xs:block hidden" />
       {badgeText}
     </p>

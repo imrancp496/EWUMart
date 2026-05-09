@@ -1,4 +1,4 @@
-import { PiList, PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiList, PiMagnifyingGlassBold, PiXBold } from "react-icons/pi";
 import { useState } from "react";
 import BottomNavBar from "./BottomNavBar";
 
@@ -30,9 +30,9 @@ function MobileSearchBar({ setIsSearchOpen }) {
 
 function DesktopSearchBar() {
   return (
-    <div className="ml:flex text-text2 ml:gap-16 ml: relative hidden w-full max-w-md items-center rounded-lg bg-white px-4 py-2 shadow-md lg:max-w-lg">
+    <div className="ml:flex text-text2 relative hidden w-full max-w-md min-w-0 items-center gap-2 rounded-lg bg-white px-4 py-2 shadow-md lg:max-w-lg xl:max-w-xl">
       <input
-        className="w-full focus:outline-none"
+        className="w-full min-w-0 focus:outline-none"
         type="text"
         placeholder="Search in Marketplace..."
       />
@@ -43,18 +43,26 @@ function DesktopSearchBar() {
   );
 }
 
-export default function TopNavbar() {
+export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
       <div className="sticky top-0 z-50 w-full">
-        <div className="bg-brand ml:py-4 xs:py-3 xs:px-8 flex justify-center px-4 py-2 text-white">
-          <div className="ml:justify-between flex max-w-6xl flex-1 items-center">
-            <button className="ml:hidden cursor-pointer">
-              <PiList size={28} />
-            </button>
+        <div className="bg-brand h-14 xs:h-16 ml:h-18 flex w-full items-center text-white">
+          <div className="ml:flex hidden w-62 items-center px-6">
             <Logo />
+          </div>
+          <div className="ml:justify-between xs:px-8 ml:gap-4 mx-auto flex w-full max-w-6xl flex-1 items-center justify-between gap-2 px-4">
+            <button
+              className="ml:hidden cursor-pointer transition-transform active:scale-95"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+            >
+              {isNavOpen ? <PiXBold size={28} /> : <PiList size={28} />}
+            </button>
+            <div className="ml:hidden mx-auto">
+              <Logo />
+            </div>
             <DesktopSearchBar />
             <div className="ml:contents hidden">
               <BottomNavBar />
@@ -74,7 +82,7 @@ export default function TopNavbar() {
           )}
         </div>
       </div>
-      <div className="ml:hidden bg-brand fixed bottom-0 left-0 z-50 flex w-full items-center justify-around py-3 text-white">
+      <div className="ml:hidden bg-brand-dark/85 fixed bottom-4 left-1/2 z-30 flex w-[95%] max-w-2xl -translate-x-1/2 items-center justify-around rounded-2xl border border-white/10 py-3 text-white shadow-2xl backdrop-blur-md">
         <BottomNavBar />
       </div>
     </>

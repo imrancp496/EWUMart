@@ -1,17 +1,19 @@
-feat: migrate to react-icons and introduce product grid layout
+feat: implement responsive left sidebar and dynamic product routing
 
-ICON MIGRATION
-- Remove `@phosphor-icons/react` dependency in favor of `react-icons`
-- Replace all phosphor icon implementations with their equivalents from `react-icons/pi`
-- Update icon usages across `App.jsx`, `TopNavbar.jsx`, `BottomNavBar.jsx`, `RegistrationModal.jsx`, and `AuthPage.jsx`
+NAVIGATION & LAYOUT REFACTOR
+- Create `LeftNavBar.jsx` with responsive toggle behavior, sliding drawer animations, and sectioned links (Categories, Seller, Report)
+- Update `MainLayout.jsx` to manage `isNavOpen` state and integrate the new `LeftNavBar` alongside the main content
+- Refactor `TopNavbar.jsx` to synchronize logo container width (`w-62`), enforce explicit predictable heights, and add animated hamburger/close toggle
+- Adjust desktop search bar layout to shrink gracefully (`min-w-0`) and restyle mobile `BottomNavBar` container into a floating, blurred pill
 
-NEW PAGES & COMPONENTS
-- Create `Product.jsx` component to display individual product cards with ratings
-- Create `Footer.jsx` component for layout completion
-- Add new `Cart.jsx` page and delete unused `Messages.jsx` page
-- Populate `Home.jsx` with a responsive grid layout displaying multiple product instances
+PRODUCT & ROUTING UPDATES
+- Extract `RatingStars` logic from `Product.jsx` into a standalone `RatingStars.jsx` component
+- Update `Product.jsx` to wrap items in `Link` components for dynamic routing based on a new `id` prop
+- Create `ProductPage.jsx` to handle rendering individual product details via `useParams`
+- Register the new `/product/:id` route within `App.jsx`
+- Supply unique `id` props to all `Product` instances in `Home.jsx` and clean up hardcoded rating values
 
-LAYOUT & STYLING UPDATES
-- Apply `bg-bg` background color and center alignment to `MainLayout`
-- Add `max-w-6xl` constraint and adjust desktop bottom padding (`ml:pb-0`) in `MainLayout`
-- Update `Profile.jsx` to return an empty layout structure
+STYLING & MISC FIXES
+- Adjust the `2lg` breakpoint in `index.css` from `72rem` to `74rem`
+- Reorder Tailwind layout classes in `AuthPage.jsx` and clean up grid columns in `Home.jsx`
+- Add basic placeholder text to `Profile.jsx`
