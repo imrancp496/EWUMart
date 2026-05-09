@@ -1,4 +1,13 @@
-fix(layout): prevent body scroll when mobile navigation is open
+refactor: improve responsive layout, viewport handling, and product page modularity
 
-LAYOUT FIXES
-- Prevent main content from scrolling on mobile when the `LeftNavBar` is open by toggling `overflow: hidden` on the `body` element
+NAVIGATION & VIEWPORT FIXES
+- Update `LeftNavBar.jsx` to use fixed positioning and a dynamic `--vh` CSS variable for accurate mobile viewport heights
+- Add body overflow restriction when `LeftNavBar` is active to prevent background scrolling
+- Refactor `TopNavbar.jsx` from sticky to fixed positioning with a transparent layout placeholder to fix mobile overscroll and bounce effects
+
+PRODUCT PAGE ENHANCEMENTS
+- Refactor `ProductPage.jsx` by extracting UI sections into modular components (`ProductGallery`, `ProductHeader`, `ProductDetailsBox`, `ProductActions`, `SellerProfile`)
+- Implement interactive product gallery using `useState` to swap the main image when thumbnails are clicked
+- Redesign responsive image layout: stacked vertically on mobile, row on `sm` screens, and integrated into `xl` CSS grid alongside product details
+- Fix list item text wrapping in `ProductDetailsBox` using `list-outside` styling
+- Introduce `SellerProfile` section and temporarily disable `ProductTags`

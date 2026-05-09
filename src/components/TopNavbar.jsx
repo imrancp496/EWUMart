@@ -48,8 +48,9 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
 
   return (
     <>
-      <div className="sticky top-0 z-50 w-full">
-        <div className="bg-brand h-14 xs:h-16 ml:h-18 flex w-full items-center text-white">
+      <div className="h-14 xs:h-16 ml:h-18 w-full shrink-0"></div>
+      <div className="fixed top-0 z-50 w-full">
+        <div className="bg-brand xs:h-16 ml:h-18 flex h-14 w-full items-center text-white">
           <div className="ml:flex hidden w-62 items-center px-6">
             <Logo />
           </div>
