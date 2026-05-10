@@ -9,7 +9,10 @@ import {
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function BottomNavBar() {
+export default function BottomNavBar({
+  isNotificationOpen,
+  setIsNotificationOpen,
+}) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,10 +20,13 @@ export default function BottomNavBar() {
     <>
       <div className="ml:hidden">
         <button
-          onClick={() => navigate("/home")}
+          onClick={() => {
+            setIsNotificationOpen(false);
+            navigate("/home");
+          }}
           className="flex cursor-pointer items-center justify-center"
         >
-          {location.pathname.startsWith("/home") ? (
+          {location.pathname.startsWith("/home") && !isNotificationOpen ? (
             <PiHouseLineFill size={24} />
           ) : (
             <PiHouseLine size={24} />
@@ -29,10 +35,13 @@ export default function BottomNavBar() {
       </div>
       <div>
         <button
-          onClick={() => navigate("/cart")}
+          onClick={() => {
+            setIsNotificationOpen(false);
+            navigate("/cart");
+          }}
           className="flex cursor-pointer items-center justify-center"
         >
-          {location.pathname.startsWith("/cart") ? (
+          {location.pathname.startsWith("/cart") && !isNotificationOpen ? (
             <PiShoppingCartSimpleFill size={24} />
           ) : (
             <PiShoppingCartSimple size={24} />
@@ -41,20 +50,19 @@ export default function BottomNavBar() {
       </div>
       <div>
         <button
-          onClick={() => navigate("/notifications")}
+          onClick={() => setIsNotificationOpen(!isNotificationOpen)}
           className="flex cursor-pointer items-center justify-center"
         >
-          {location.pathname.startsWith("/notifications") ? (
-            <PiBellFill size={24} />
-          ) : (
-            <PiBell size={24} />
-          )}
+          {isNotificationOpen ? <PiBellFill size={24} /> : <PiBell size={24} />}
         </button>
       </div>
       <div>
         <button
-          onClick={() => navigate("/profile")}
-          className={`font-syne bg-brand-mid flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border-2 ${location.pathname.startsWith("/profile") ? "border-white" : "border-none"} text-center text-sm font-bold text-white`}
+          onClick={() => {
+            setIsNotificationOpen(false);
+            navigate("/profile");
+          }}
+          className={`font-syne bg-brand-mid flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border-2 ${location.pathname.startsWith("/profile") && !isNotificationOpen ? "border-white" : "border-none"} text-center text-sm font-bold text-white`}
         >
           R
         </button>

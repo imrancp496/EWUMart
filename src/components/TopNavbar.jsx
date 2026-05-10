@@ -1,6 +1,7 @@
 import { PiList, PiMagnifyingGlassBold, PiXBold } from "react-icons/pi";
 import { useState } from "react";
 import BottomNavBar from "./BottomNavBar";
+import NotificationModal from "../modals/NotificationModal";
 
 function Logo() {
   return (
@@ -45,6 +46,7 @@ function DesktopSearchBar() {
 
 export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   return (
     <>
@@ -66,7 +68,10 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
             </div>
             <DesktopSearchBar />
             <div className="ml:contents hidden">
-              <BottomNavBar />
+              <BottomNavBar 
+                isNotificationOpen={isNotificationOpen}
+                setIsNotificationOpen={setIsNotificationOpen}
+              />
             </div>
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -83,9 +88,16 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
           )}
         </div>
       </div>
-      <div className="ml:hidden bg-brand-dark/85 fixed bottom-4 left-1/2 z-30 flex w-[95%] max-w-2xl -translate-x-1/2 items-center justify-around rounded-2xl border border-white/10 py-3 text-white shadow-2xl backdrop-blur-md">
-        <BottomNavBar />
+      <div className="ml:hidden bg-brand-dark/85 fixed bottom-4 left-1/2 z-[60] flex w-[95%] max-w-2xl -translate-x-1/2 items-center justify-around rounded-2xl border border-white/10 py-3 text-white shadow-2xl backdrop-blur-md">
+        <BottomNavBar 
+          isNotificationOpen={isNotificationOpen}
+          setIsNotificationOpen={setIsNotificationOpen}
+        />
       </div>
+      <NotificationModal 
+        isOpen={isNotificationOpen} 
+        onClose={() => setIsNotificationOpen(false)} 
+      />
     </>
   );
 }

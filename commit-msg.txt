@@ -1,15 +1,23 @@
-refactor: improve ProfileBio rendering, fix layout issues, and extract ProductGroup component
+refactor: implement responsive cart grid layout and modular notification system
 
-PROFILE BIO & RENDERING FIXES
-- Fix React cascading render warnings in `ProfileBio` by deriving `displayedText` during the render phase rather than via synchronous state updates inside `useLayoutEffect`
-- Update dynamic text truncation logic to accurately measure DOM node widths by injecting the actual `font-bold` span, ensuring text correctly wraps to exactly 2 lines
+CART PAGE REFINEMENTS
+- Refactor `Cart.jsx` to use a complex responsive grid system (`sm:grid-cols-7`, `sm:grid-rows-[1fr_auto]`) for better information density
+- Reposition product info and pricing: Info takes 3 columns, Price takes 2 columns in Row 1, and the Delete Button is placed in Row 2
+- Align Delete Button to bottom-right (`items-end justify-end`) of its grid area on large screens
+- Implement responsive padding and font sizing adjustments for `lg` and `sm` breakpoints
 
-PROFILE PAGE ENHANCEMENTS
-- Fix Facebook link routing issue in `PersonalInfo` by automatically prepending `https://` to the URL if missing, ensuring off-site navigation
-- Prevent empty Facebook rows from rendering by making the element conditionally depend on the presence of the `fbLink` prop
-- Resolve CSS padding constraint in the `Buttons` component by removing the fixed `h-8` height class, allowing the new `py-` classes to naturally set button sizes
-- Update Profile mock data with specific product categories (Bag Charms, Keyrings) and new user info
+NOTIFICATION SYSTEM UPGRADES
+- Transition from a standalone notification page to a modal-based architecture
+- Create `NotificationModal.jsx` for displaying user alerts and system messages without navigating away from the current page
+- Integrate notification trigger state into `TopNavbar` and `BottomNavBar` components
+- Remove legacy `Notifications.jsx` file to streamline the codebase
 
-MODULAR COMPONENT EXTRACTION
-- Extract product rendering logic into a highly reusable `ProductGroup.jsx` component that accepts dynamic `heading`, `description`, and `products` arrays
-- Refactor `Home.jsx` and `Profile.jsx` to replace hardcoded, repetitive `Product` components with the new flexible `ProductGroup` architecture
+LAYOUT & NAVIGATION FIXES
+- Constrain `TopNavbar` width to match page content for better horizontal alignment
+- Center `PersonalInfo` and `Profile` page content horizontally for consistent visual balance
+- Adjust mobile navigation layering (z-index) to prevent overlap issues with sidebars
+- Increase font sizes and icon dimensions for `SellerProfile` links on medium to large screens
+
+COMPONENT ENHANCEMENTS
+- Refine product detail layout in `ProductPage` for better image and thumbnail positioning
+- Clean up icon weights across the project and ensure consistent usage of `react-icons/pi`

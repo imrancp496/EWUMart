@@ -9,17 +9,17 @@ export default function Product({
   // totalReviews,
 }) {
   return (
-    <div className="2xs:flex 2xs:gap-4 xs:block rounded-lg bg-white p-4 shadow-md">
+    <div className="2xs:flex 2xs:gap-4 2xs:items-center xs:block rounded-lg bg-white p-4 shadow-md">
       <Link
         to={`/product/${id}`}
         className="xs:basis-auto 2xs:basis-2/5 cursor-pointer"
       >
         <img src={productImgLink} />
       </Link>
-      <div className="2xs:basis-3/5 xs:basis-auto mt-4">
+      <div className="2xs:basis-3/5 xs:basis-auto 2xs:mt-0 xs:mt-4 mt-4">
         <Link
           to={`/product/${id}`}
-          className="hover:text-brand-mid mb-2 line-clamp-2 h-12 cursor-pointer leading-6 font-medium hover:underline"
+          className="hover:text-brand-mid xs:h-12 mb-2 line-clamp-2 cursor-pointer leading-6 font-medium hover:underline"
         >
           {productName}
         </Link>

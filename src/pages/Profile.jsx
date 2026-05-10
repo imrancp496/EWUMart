@@ -115,28 +115,31 @@ function Buttons() {
 export default function Profile() {
   return (
     <div>
-      <div className="mb-4 flex items-center gap-3">
-        <ProfilePic />
-        <div>
-          <ProfileName />
-          <ProfileCount />
-        </div>
-      </div>
-      <ProfileBio
-        bioText={
-          "Sunflowers • Lilies • Flowers • Crochet 🧶\nHandmade bouquets, cute keychains and bag charms 🌻\nPerfect for gifts & keepsakes 🎀"
-        }
-      />
-      <div className="mb-12 max-w-2xl">
-        <div className="mb-6">
+      <div className="xl:mb-12 xl:flex xl:items-center xl:justify-center xl:gap-16">
+        <div className="mb-6 w-full max-w-2xl xl:mx-0 xl:mb-0 xl:flex-1">
+          <div className="mb-4 flex items-center gap-3">
+            <ProfilePic />
+            <div>
+              <ProfileName />
+              <ProfileCount />
+            </div>
+          </div>
+          <ProfileBio
+            bioText={
+              "Sunflowers • Lilies • Flowers • Crochet 🧶\nHandmade bouquets, cute keychains and bag charms 🌻\nPerfect for gifts & keepsakes 🎀"
+            }
+          />
           <Buttons />
         </div>
-        <PersonalInfo
-          studentID={"2023-3-60-202"}
-          gender={"male"}
-          department={"BBA"}
-          fbLink={"https://www.facebook.com/profile.php?id=61587068012651"}
-        />
+        <div className="mb-12 w-full max-w-2xl xl:mx-0 xl:mb-0 xl:flex-1">
+          <PersonalInfo
+            fullName={"Raiyana Binte Reza Raisa"}
+            studentID={"2023-3-60-202"}
+            gender={"female"}
+            department={"BBA"}
+            fbLink={"https://www.facebook.com/profile.php?id=61587068012651"}
+          />
+        </div>
       </div>
       <div className="flex flex-col gap-10">
         <ProductGroup

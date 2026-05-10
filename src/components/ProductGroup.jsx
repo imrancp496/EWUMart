@@ -11,9 +11,7 @@ export default function ProductGroup({ heading, description, products }) {
             </span>
           </h1>
         )}
-        {description && (
-          <p className="text-text2 mb-4 text-sm">{description}</p>
-        )}
+        {description && <p className="text-text2 text-sm">{description}</p>}
       </div>
       {products &&
         products.map((product) => (

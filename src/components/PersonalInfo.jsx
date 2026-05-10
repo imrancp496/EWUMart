@@ -4,9 +4,11 @@ import {
   PiGenderFemaleBold,
   PiBuildingOfficeBold,
   PiFacebookLogoBold,
+  PiIdentificationBadgeBold,
 } from "react-icons/pi";
 
 export default function PersonalInfo({
+  fullName,
   studentID,
   gender,
   department,
@@ -18,6 +20,10 @@ export default function PersonalInfo({
   return (
     <div className="text-text2 rounded-lg bg-white p-4 shadow-sm">
       <h2 className="mb-4 font-bold sm:text-lg">Personal Details</h2>
+      <div className="mb-2 flex items-center gap-4">
+        <PiIdentificationBadgeBold size={20} />
+        <span className="text-sm">{fullName}</span>
+      </div>
       <div className="mb-2 flex items-center gap-4">
         <PiStudentBold size={20} />
         <span className="text-sm">{studentID}</span>

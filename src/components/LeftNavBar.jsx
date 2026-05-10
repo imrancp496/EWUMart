@@ -4,8 +4,9 @@ import {
   PiClipboardTextBold,
   PiCaretDownBold,
   PiClockCounterClockwiseBold,
-  PiBugBeetleBold,
 } from "react-icons/pi";
+
+import { TbMessageReport } from "react-icons/tb";
 
 function NavItem({ children }) {
   return (
@@ -79,7 +80,7 @@ export default function LeftNavBar({ isNavOpen, setIsNavOpen }) {
           </h2>
           <ul className="text-text2 2xs:text-base flex w-full flex-col gap-2 text-sm">
             <NavItem>
-              <PiBugBeetleBold size={18} /> Report a Bug
+              <TbMessageReport size={18} /> Report a Problem
             </NavItem>
           </ul>
         </div>
