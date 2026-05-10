@@ -98,7 +98,7 @@ function SellerProfile() {
       <div className="flex items-center gap-3">
         <button
           onClick={() => navigate("/profile")}
-          className={`font-syne bg-brand-mid flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 ${location.pathname.startsWith("/profile") ? "border-white" : "border-none"} text-center text-sm font-bold text-white`}
+          className={`font-syne bg-brand-mid flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 ${location.pathname.startsWith("/profile") ? "border-white" : "border-none"} text-center font-bold text-white`}
         >
           R
         </button>

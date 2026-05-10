@@ -1,13 +1,15 @@
-refactor: improve responsive layout, viewport handling, and product page modularity
+refactor: improve ProfileBio rendering, fix layout issues, and extract ProductGroup component
 
-NAVIGATION & VIEWPORT FIXES
-- Update `LeftNavBar.jsx` to use fixed positioning and a dynamic `--vh` CSS variable for accurate mobile viewport heights
-- Add body overflow restriction when `LeftNavBar` is active to prevent background scrolling
-- Refactor `TopNavbar.jsx` from sticky to fixed positioning with a transparent layout placeholder to fix mobile overscroll and bounce effects
+PROFILE BIO & RENDERING FIXES
+- Fix React cascading render warnings in `ProfileBio` by deriving `displayedText` during the render phase rather than via synchronous state updates inside `useLayoutEffect`
+- Update dynamic text truncation logic to accurately measure DOM node widths by injecting the actual `font-bold` span, ensuring text correctly wraps to exactly 2 lines
 
-PRODUCT PAGE ENHANCEMENTS
-- Refactor `ProductPage.jsx` by extracting UI sections into modular components (`ProductGallery`, `ProductHeader`, `ProductDetailsBox`, `ProductActions`, `SellerProfile`)
-- Implement interactive product gallery using `useState` to swap the main image when thumbnails are clicked
-- Redesign responsive image layout: stacked vertically on mobile, row on `sm` screens, and integrated into `xl` CSS grid alongside product details
-- Fix list item text wrapping in `ProductDetailsBox` using `list-outside` styling
-- Introduce `SellerProfile` section and temporarily disable `ProductTags`
+PROFILE PAGE ENHANCEMENTS
+- Fix Facebook link routing issue in `PersonalInfo` by automatically prepending `https://` to the URL if missing, ensuring off-site navigation
+- Prevent empty Facebook rows from rendering by making the element conditionally depend on the presence of the `fbLink` prop
+- Resolve CSS padding constraint in the `Buttons` component by removing the fixed `h-8` height class, allowing the new `py-` classes to naturally set button sizes
+- Update Profile mock data with specific product categories (Bag Charms, Keyrings) and new user info
+
+MODULAR COMPONENT EXTRACTION
+- Extract product rendering logic into a highly reusable `ProductGroup.jsx` component that accepts dynamic `heading`, `description`, and `products` arrays
+- Refactor `Home.jsx` and `Profile.jsx` to replace hardcoded, repetitive `Product` components with the new flexible `ProductGroup` architecture
