@@ -6,7 +6,7 @@ import NotificationModal from "../modals/NotificationModal";
 function Logo() {
   return (
     <a
-      href="/home"
+      href="/"
       className="font-syne xs:text-2xl ml:mx-0 mx-auto cursor-pointer text-xl font-extrabold text-white"
     >
       EWU<span className="text-accent">Mart</span>
@@ -50,7 +50,7 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
 
   return (
     <>
-      <div className="h-14 xs:h-16 ml:h-18 w-full shrink-0"></div>
+      <div className="xs:h-16 ml:h-18 h-14 w-full shrink-0"></div>
       <div className="fixed top-0 z-50 w-full">
         <div className="bg-brand xs:h-16 ml:h-18 flex h-14 w-full items-center text-white">
           <div className="ml:flex hidden w-62 items-center px-6">
@@ -68,7 +68,7 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
             </div>
             <DesktopSearchBar />
             <div className="ml:contents hidden">
-              <BottomNavBar 
+              <BottomNavBar
                 isNotificationOpen={isNotificationOpen}
                 setIsNotificationOpen={setIsNotificationOpen}
               />
@@ -89,14 +89,14 @@ export default function TopNavbar({ isNavOpen, setIsNavOpen }) {
         </div>
       </div>
       <div className="ml:hidden bg-brand-dark/85 fixed bottom-4 left-1/2 z-[60] flex w-[95%] max-w-2xl -translate-x-1/2 items-center justify-around rounded-2xl border border-white/10 py-3 text-white shadow-2xl backdrop-blur-md">
-        <BottomNavBar 
+        <BottomNavBar
           isNotificationOpen={isNotificationOpen}
           setIsNotificationOpen={setIsNotificationOpen}
         />
       </div>
-      <NotificationModal 
-        isOpen={isNotificationOpen} 
-        onClose={() => setIsNotificationOpen(false)} 
+      <NotificationModal
+        isOpen={isNotificationOpen}
+        onClose={() => setIsNotificationOpen(false)}
       />
     </>
   );

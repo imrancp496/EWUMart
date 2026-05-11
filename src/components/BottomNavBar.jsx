@@ -22,11 +22,11 @@ export default function BottomNavBar({
         <button
           onClick={() => {
             setIsNotificationOpen(false);
-            navigate("/home");
+            navigate("/");
           }}
           className="flex cursor-pointer items-center justify-center"
         >
-          {location.pathname.startsWith("/home") && !isNotificationOpen ? (
+          {location.pathname == "/" && !isNotificationOpen ? (
             <PiHouseLineFill size={24} />
           ) : (
             <PiHouseLine size={24} />
