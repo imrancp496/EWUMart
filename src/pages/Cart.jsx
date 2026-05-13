@@ -24,7 +24,7 @@ const cartProducts = [
   {
     id: 4,
     name: "Airpods 2nd Gen",
-    link: "https://scontent.fdac207-1.fna.fbcdn.net/v/t39.30808-6/688838295_2868852763463098_1767145645454168066_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHVIRqlNn0Shdxvjm699_UOISarfNvCk1AhJqt828KTUKKyw6lnJvPmAharvPa-3OQ_781Ccic_kor9_TfmbQ1B&_nc_ohc=WZj1EbFStsEQ7kNvwH1jGgD&_nc_oc=AdryfY7YkTmWTJ5Q5q_aF3ygqKJNCM4WNLlPt8t9GDb_tnF5Lj7sly7iPtgmUiN7efE&_nc_zt=23&_nc_ht=scontent.fdac207-1.fna&_nc_gid=6zdWI7K_C720_tDbjqCvXQ&_nc_ss=7b2a8&oh=00_Af5zc6H1ydaCLqxGsYudRGjLWs4sCt910HPUtNq_-VqdvQ&oe=6A035F51",
+    link: "https://www.macfactory.in/cdn/shop/products/22159-wireless-headphones-for-apple-airpods-3rd-generation-1_1024x.jpg?v=1642091220",
     price: "13,999",
   },
 ];

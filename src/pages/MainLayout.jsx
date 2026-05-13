@@ -3,14 +3,19 @@ import { Outlet } from "react-router-dom";
 import TopNavBar from "../components/TopNavbar";
 import LeftNavBar from "../components/LeftNavBar";
 import AuthModal from "../modals/AuthModal";
+import ReportModal from "../modals/ReportModal";
 
 export default function MainLayout() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [authModal, setAuthModal] = useState(null);
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
   const openLogin = () => setAuthModal("login");
   const openSignup = () => setAuthModal("signup");
   const closeAuthModal = () => setAuthModal(null);
+
+  const openReportModal = () => setIsReportModalOpen(true);
+  const closeReportModal = () => setIsReportModalOpen(false);
 
   return (
     <div className="bg-bg flex min-h-screen flex-col">
@@ -21,6 +26,7 @@ export default function MainLayout() {
           setIsNavOpen={setIsNavOpen}
           onLogin={openLogin}
           onSignup={openSignup}
+          onReport={openReportModal}
         />
         <main className="ml:pb-8 xs:pt-8 xs:px-8 mx-auto w-full max-w-6xl flex-1 px-4 pt-4 pb-23">
           <Outlet />
@@ -31,6 +37,11 @@ export default function MainLayout() {
         isOpen={authModal !== null}
         initialStep={authModal ?? "login"}
         onClose={closeAuthModal}
+      />
+
+      <ReportModal
+        isOpen={isReportModalOpen}
+        onClose={closeReportModal}
       />
     </div>
   );

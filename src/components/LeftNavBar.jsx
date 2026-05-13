@@ -26,6 +26,7 @@ export default function LeftNavBar({
   setIsNavOpen,
   onLogin,
   onSignup,
+  onReport,
 }) {
   useEffect(() => {
     const setVh = () => {
@@ -63,7 +64,7 @@ export default function LeftNavBar({
       />
       <div className="ml:block hidden h-full w-62 shrink-0"></div>
       <nav
-        className={`border-border 2xs:p-6 xs:top-16 ml:top-18 xs:h-[calc(var(--vh,1vh)*100-4rem)] ml:h-[calc(var(--vh,1vh)*100-4.5rem)] 2xs:w-62 fixed top-14 left-0 z-[100] flex h-[calc(var(--vh,1vh)*100-3.5rem)] w-54 flex-col items-start gap-12 border-r bg-white p-4 transition-transform duration-300 ease-in-out ${
+        className={`border-border 2xs:p-6 xs:top-16 ml:top-18 xs:h-[calc(var(--vh,1vh)*100-4rem)] ml:h-[calc(var(--vh,1vh)*100-4.5rem)] 2xs:w-62 fixed top-14 left-0 z-100 flex h-[calc(var(--vh,1vh)*100-3.5rem)] w-54 flex-col items-start gap-12 border-r bg-white p-4 transition-transform duration-300 ease-in-out ${
           isNavOpen
             ? "ml:shadow-none translate-x-0 shadow-2xl"
             : "ml:translate-x-0 -translate-x-full"
@@ -115,7 +116,7 @@ export default function LeftNavBar({
             Report
           </h2>
           <ul className="text-text2 2xs:text-base flex w-full flex-col gap-2 text-sm">
-            <NavItem>
+            <NavItem onClick={onReport}>
               <TbMessageReport size={18} /> Report a Problem
             </NavItem>
           </ul>
